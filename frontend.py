@@ -84,7 +84,12 @@ for thread_id in st.session_state['chat_threads'][::-1]:
 
 
 
-# ********************** Main UI ********************** #
+# ********************** Main UI ****st.set_page_config(
+st.set_page_config(
+    page_title="Geography Tutor",
+    page_icon="🗺️"
+)
+
 st.title("Geography Tutor")
 st.write(
     """The AI Tutor answers questions based on these NCERT books:
