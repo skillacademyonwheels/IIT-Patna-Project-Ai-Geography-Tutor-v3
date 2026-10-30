@@ -98,6 +98,7 @@ st.write(
     - India People and Economy
     - India Physical Environment
     - Practical Work in Geography
+    Developed by Anubhav Lal, Mob: 9560058067, Email- advelestica.design@gmail.com
     """
 )
 
