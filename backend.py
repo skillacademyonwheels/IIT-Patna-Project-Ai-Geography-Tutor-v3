@@ -55,7 +55,7 @@ def build_or_load_vectorstore() -> FAISS:
 
 vectorstore = build_or_load_vectorstore()
 retriever = vectorstore.as_retriever(
-    search_type="mmr", search_kwargs={"k": TOP_K}
+    search_type="similarity_search_with_score", search_kwargs={"k": TOP_K}
 )
 
 
