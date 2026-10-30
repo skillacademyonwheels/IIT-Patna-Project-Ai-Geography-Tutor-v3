@@ -95,42 +95,30 @@ st.markdown(
     """
     <style>
     .geo-intro {
-        padding: 1.25rem 1.5rem;
         margin: 0.5rem 0 1.5rem;
-        border: 1px solid rgba(46, 125, 50, 0.22);
-        border-radius: 1rem;
-        background: linear-gradient(135deg, rgba(46, 125, 50, 0.10), rgba(33, 150, 243, 0.06));
     }
     .geo-intro p {
-        margin: 0.35rem 0 1rem;
+        margin: 0.35rem 0 0.65rem;
     }
     .geo-eyebrow {
         color: #2e7d32;
-        font-size: 0.78rem;
+        font-size: 1.15rem;
         font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
+        margin: 0 0 0.35rem;
     }
     .geo-books {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
         margin: 0 0 1.1rem;
+        padding-left: 1.25rem;
     }
-    .geo-book {
-        padding: 0.35rem 0.65rem;
-        border: 1px solid rgba(46, 125, 50, 0.2);
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.55);
-        font-size: 0.85rem;
+    .geo-books li {
+        margin: 0.3rem 0;
     }
     .geo-credit {
         display: flex;
         flex-wrap: wrap;
         align-items: baseline;
         gap: 0.35rem;
-        padding-top: 0.8rem;
-        border-top: 1px solid rgba(46, 125, 50, 0.18);
+        margin-top: 0.8rem;
         font-size: 0.9rem;
     }
     .geo-credit-label {
@@ -147,14 +135,14 @@ st.markdown(
     }
     </style>
     <section class="geo-intro">
-        <div class="geo-eyebrow">Explore geography with your AI tutor</div>
-        <p>Get answers grounded in these NCERT books:</p>
-        <div class="geo-books">
-            <span class="geo-book">Fundamentals of Human Geography</span>
-            <span class="geo-book">India People and Economy</span>
-            <span class="geo-book">India Physical Environment</span>
-            <span class="geo-book">Practical Work in Geography</span>
-        </div>
+        <h2 class="geo-eyebrow">RAG based AI tutor</h2>
+        <p>100% NCERT - ZERO Hallucination:</p>
+        <ul class="geo-books">
+            <li><strong>Book:</strong> Fundamentals of Physical Geography</li>
+            <li><strong>Class:</strong> 11</li>
+            <li><strong>Contents:</strong> 6 units and 14 chapters</li>
+            <li><strong>Source:</strong> <a href="https://ncert.nic.in/">NCERT</a>. All credits and attribution belong to NCERT.</li>
+        </ul>
         <div class="geo-credit">
             <span class="geo-credit-label">Developed by</span>
             <strong>Anubhav Lal</strong>
@@ -188,7 +176,7 @@ if user_input:
         "run_name": "chat_turn",
     }
     
-    result = chatbot.invoke({'messages': [HumanMessage(content=user_input)]}, config=CONFIG)
+    # result = chatbot.invoke({'messages': [HumanMessage(content=user_input)]}, config=CONFIG)
    
         
     with st.chat_message("assistant"):
