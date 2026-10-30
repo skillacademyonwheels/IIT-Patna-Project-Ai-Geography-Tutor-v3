@@ -55,10 +55,11 @@ def build_or_load_vectorstore() -> FAISS:
     vs.save_local(str(VECTORSTORE_PATH))
     return vs
 
+SCORE_THRESHOLD = 0.35 
 
 vectorstore = build_or_load_vectorstore()
 retriever = vectorstore.as_retriever(
-    search_type="similarity", search_kwargs={"k": TOP_K}
+    search_type="similarity_score_threshold", search_kwargs={"k": TOP_K,"score_threshold": SCORE_THRESHOLD}
 )
 
 
@@ -85,6 +86,8 @@ so they are easier to read, with these strict rules:
 - Do not merge passages that say different things."""
 
 
+NO_DATA_MESSAGE = "We do not have Data related to your prompt. Our Context is limited to the NCERT Textbook only."
+
 def retrieve_node(state: ChatState):
     query = state["messages"][-1].content
     docs = retriever.invoke(query)
@@ -105,7 +108,7 @@ def retrieve_node(state: ChatState):
 def format_node(state: ChatState):
     context = state.get("context", "")
     if not context:
-        return {"messages": [AIMessage(content="No relevant passages found.")]}
+        return {"messages": [AIMessage(content = NO_DATA_MESSAGE)]}
 
     query = state["messages"][-1].content
     response = llm.invoke(
