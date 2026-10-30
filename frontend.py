@@ -167,7 +167,10 @@ st.markdown(
 
 for message in st.session_state["message_history"]:
         with st.chat_message(message["role"]):
-            st.text(message["content"])
+            if message["role"] == "assistant":
+                st.markdown(message["content"])
+            else:
+                st.text(message["content"])
 
 
 user_input = st.chat_input("Type your message here...")

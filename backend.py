@@ -81,7 +81,11 @@ def retrieve_node(state: ChatState):
         source = Path(doc.metadata.get("source", "unknown")).name
         page = doc.metadata.get("page")
         page_label = f", page {page + 1}" if isinstance(page, int) else ""
-        parts.append(f"[{i}] {source}{page_label}\n{doc.page_content.strip()}")
+        parts.append(
+            f"### Passage {i}\n"
+            f"**Source:** {source}{page_label}\n\n"
+            f"{doc.page_content.strip()}"
+        )
 
     return {
         "messages": [
